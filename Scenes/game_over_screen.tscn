@@ -1,0 +1,152 @@
+[gd_scene load_steps=12 format=3 uid="uid://nqiwxphvdd5"]
+
+[ext_resource type="Script" path="res://Scripts/game_over_screen.gd" id="1_qoqf1"]
+[ext_resource type="FontFile" uid="uid://nr8sid7ajyxb" path="res://Assets/font/Kenney Blocks.ttf" id="1_xxp7x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veob0"]
+bg_color = Color(1, 0, 0, 0.501961)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_i0fkp"]
+font = ExtResource("1_xxp7x")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxghj"]
+font = ExtResource("1_xxp7x")
+font_size = 45
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk02r"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wnjhu"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jhntm"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0qtjf"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qsl8"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ujik"]
+bg_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_bottom_left = 25
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qoqf1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -198.0
+offset_right = 324.0
+offset_bottom = 198.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_veob0")
+
+[node name="GameOver" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -177.5
+offset_right = 208.0
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_i0fkp")
+
+[node name="Score" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -89.5
+offset_right = 208.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "SCORE 9999"
+label_settings = SubResource("LabelSettings_mxghj")
+
+[node name="Level" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.0
+offset_top = -41.5
+offset_right = 208.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-664, -46.5)
+text = "LEVEL 9999"
+label_settings = SubResource("LabelSettings_mxghj")
+
+[node name="RetryButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -316.0
+offset_top = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_xxp7x")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_pk02r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wnjhu")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jhntm")
+text = "RETRY"
+
+[node name="QuitButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -108.0
+offset_right = 316.0
+grow_vertical = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_xxp7x")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_0qtjf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2qsl8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3ujik")
+text = "QUIT
+"

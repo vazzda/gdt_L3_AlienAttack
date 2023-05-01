@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://dquatfbi5e4jt"]
+
+[ext_resource type="Texture2D" uid="uid://ccr6kw40jk4m2" path="res://Assets/textures/player_ship.png" id="1_543c1"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_fupsv"]
+[ext_resource type="AudioStream" uid="uid://h1ee4kxel7ye" path="res://Assets/audio/sfx_laser2.wav" id="2_bwy7b"]
+
+[sub_resource type="Gradient" id="Gradient_h6quk"]
+offsets = PackedFloat32Array(0.183178, 0.579439, 0.970093)
+colors = PackedColorArray(1, 0, 0, 0.337255, 1, 0.784314, 0, 0.862745, 1, 1, 1, 0.568627)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1gcq4"]
+gradient = SubResource("Gradient_h6quk")
+
+[sub_resource type="Curve" id="Curve_upb32"]
+_data = [Vector2(0.00530035, 0.345455), 0.0, 0.0, 0, 0, Vector2(1, 0.690909), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2c1l1"]
+curve = SubResource("Curve_upb32")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ybatb"]
+lifetime_randomness = 0.3
+emission_shape = 3
+emission_box_extents = Vector3(1, 6, 1)
+particle_flag_disable_z = true
+spread = 27.32
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = -200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_2c1l1")
+color_ramp = SubResource("GradientTexture1D_1gcq4")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dnhd5"]
+radius = 23.0
+height = 96.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_fupsv")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="RocketLaunchSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("2_bwy7b")
+volume_db = -21.737
+
+[node name="FlameParticleEffect" type="GPUParticles2D" parent="."]
+position = Vector2(-18, -21)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_ybatb")
+lifetime = 0.1
+
+[node name="FlameParticleEffect2" type="GPUParticles2D" parent="."]
+position = Vector2(-18, 19)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_ybatb")
+lifetime = 0.1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_543c1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+rotation = 3.14159
+shape = SubResource("CapsuleShape2D_dnhd5")
+
+[node name="RocketContainer" type="Node" parent="."]

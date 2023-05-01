@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://doktdrhwm623w"]
+
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_654hf"]
+[ext_resource type="Texture2D" uid="uid://dq473tdew2td5" path="res://Assets/textures/bg.png" id="1_likms"]
+[ext_resource type="PackedScene" uid="uid://boyssy56rriar" path="res://Scenes/hud.tscn" id="2_bus7m"]
+[ext_resource type="PackedScene" uid="uid://dquatfbi5e4jt" path="res://Scenes/Player.tscn" id="2_dar5a"]
+[ext_resource type="PackedScene" uid="uid://cgqyrkn2ab4ps" path="res://Scenes/enemy_spawner.tscn" id="3_l5w7l"]
+[ext_resource type="AudioStream" uid="uid://cc34ldi57f8fy" path="res://Assets/audio/explode.wav" id="3_mus4i"]
+[ext_resource type="PackedScene" uid="uid://binvuk632mqtk" path="res://Scenes/deathzone.tscn" id="4_lr8og"]
+[ext_resource type="AudioStream" uid="uid://dqcyb3ebcb8c3" path="res://Assets/audio/hit.wav" id="7_28h55"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_654hf")
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="EnemyHitSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("7_28h55")
+
+[node name="PlayerHItSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("3_mus4i")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("2_bus7m")]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1286.0
+offset_bottom = 726.0
+texture = ExtResource("1_likms")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_dar5a")]
+position = Vector2(56, 363)
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_l5w7l")]
+
+[node name="Deathzone" parent="." instance=ExtResource("4_lr8og")]
